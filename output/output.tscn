@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkiao2a760e1y"]
+
+[ext_resource type="Script" uid="uid://b6d8x2lj641xm" path="res://output/output.gd" id="1_dgfn0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohmhj"]
+size = Vector2(16, 16)
+
+[node name="Output" type="Node2D"]
+script = ExtResource("1_dgfn0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="OutputHitbox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutputHitbox"]
+shape = SubResource("RectangleShape2D_ohmhj")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://c43k4wk5e5fug"]
+
+[ext_resource type="Script" uid="uid://dplef7pi6wmuf" path="res://input/input.gd" id="1_iv50o"]
+
+[node name="Input" type="Node2D"]
+script = ExtResource("1_iv50o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Laser" type="Line2D" parent="."]
+
+[node name="LaserRay" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
