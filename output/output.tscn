@@ -10,7 +10,9 @@ script = ExtResource("1_dgfn0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="OutputHitbox" type="StaticBody2D" parent="."]
+[node name="OutputHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OutputHitbox"]
 shape = SubResource("RectangleShape2D_ohmhj")
+
+[connection signal="area_entered" from="OutputHitbox" to="." method="_on_output_hitbox_area_entered"]

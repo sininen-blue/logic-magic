@@ -1,46 +1,46 @@
 extends Node2D
 
-signal collided(collided_with)
 
-enum Direction {UP, DOWN, LEFT, RIGHT}
-@export var direction: Direction = Direction.RIGHT
+@export var id: int = 0
+enum Directions {UP, DOWN, LEFT, RIGHT}
+@export var direction: Directions = Directions.RIGHT
 @export var value: int = 0
+@export var speed: float = 64
 
-var laserPath: PackedVector2Array = []
+var laser_path: PackedVector2Array = []
+var moving: bool = true
 
-@onready var laser_ray: RayCast2D = $LaserRay
 @onready var laser: Line2D = $Laser
+@onready var laser_hitbox: Area2D = $LaserHitbox
 
 
 func _ready() -> void:
-	if direction == Direction.UP:
-		laser_ray.target_position = Vector2(0, -1)
-	elif direction == Direction.DOWN:
-		laser_ray.target_position = Vector2(0, 1)
-	elif direction == Direction.LEFT:
-		laser_ray.target_position = Vector2(-1, 0)
-	elif direction == Direction.RIGHT:
-		laser_ray.target_position = Vector2(1, 0)
-	laser_ray.target_position = laser_ray.target_position * 16
+	if direction == Directions.UP:
+		laser_hitbox.position = Vector2(0, -1)
+	elif direction == Directions.DOWN:
+		laser_hitbox.position = Vector2(0, 1)
+	elif direction == Directions.LEFT:
+		laser_hitbox.position = Vector2(-1, 0)
+	elif direction == Directions.RIGHT:
+		laser_hitbox.position = Vector2(1, 0)
+	laser_hitbox.position = laser_hitbox.position * 16
 		
-	laserPath.append(Vector2.ZERO)
-	laser.points = laserPath
+	laser_path.append(Vector2.ZERO)
+	laser.points = laser_path
+
+func _process(delta: float) -> void:
+	if moving:
+		var next_position: Vector2 = laser_path[-1] + laser_hitbox.position.normalized() * speed * delta
+		
+		laser_path.append(next_position)
+		laser.points = laser_path
+		laser_hitbox.position = next_position
 
 
 
-func _on_timer_timeout() -> void:
-	if laser_ray.is_colliding():
-		var collided_with: Object = laser_ray.get_collider()
-		
-		var target: String
-		if "Output" in collided_with.name:
-			target = collided_with.parent.name
-		
-		collided.emit(self.name, value, target)
-		return
-	
-	var nextPosition = Vector2(laserPath[-1].x + 16, 0)
-	laserPath.append(nextPosition)
-	laser.points = laserPath
-	
-	laser_ray.position = nextPosition
+func _on_laser_hitbox_area_entered(_area: Area2D) -> void:
+	var next_position: Vector2 = laser_path[-1] + laser_hitbox.position.normalized()
+	laser_path.append(next_position)
+	laser.points = laser_path
+	laser_hitbox.position = next_position
+	moving = false

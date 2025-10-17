@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c43k4wk5e5fug"]
+[gd_scene load_steps=3 format=3 uid="uid://c43k4wk5e5fug"]
 
 [ext_resource type="Script" uid="uid://dplef7pi6wmuf" path="res://input/input.gd" id="1_iv50o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iv50o"]
+radius = 5.0
 
 [node name="Input" type="Node2D"]
 script = ExtResource("1_iv50o")
@@ -9,10 +12,9 @@ script = ExtResource("1_iv50o")
 
 [node name="Laser" type="Line2D" parent="."]
 
-[node name="LaserRay" type="RayCast2D" parent="."]
-target_position = Vector2(0, 0)
+[node name="LaserHitbox" type="Area2D" parent="."]
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserHitbox"]
+shape = SubResource("CircleShape2D_iv50o")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="LaserHitbox" to="." method="_on_laser_hitbox_area_entered"]

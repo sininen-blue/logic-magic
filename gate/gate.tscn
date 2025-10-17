@@ -7,11 +7,15 @@ size = Vector2(16, 16)
 
 [node name="Gate" type="Node2D"]
 script = ExtResource("1_3cjye")
-type = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="Hitbox" type="StaticBody2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_njhvc")
+
+[node name="OutputLocation" type="Node2D" parent="."]
+position = Vector2(8, 0)
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
