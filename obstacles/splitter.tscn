@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5hgi4ennjegi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhmn5"]
+size = Vector2(16, 16)
+
+[node name="Splitter" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="SplitterHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SplitterHitbox"]
+shape = SubResource("RectangleShape2D_qhmn5")

@@ -1,39 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1jw262h5dtr0"]
 
 [ext_resource type="Script" uid="uid://8dta3re1yhg0" path="res://main/main.gd" id="1_pjrb6"]
-[ext_resource type="PackedScene" uid="uid://c43k4wk5e5fug" path="res://input/input.tscn" id="2_pjrb6"]
-[ext_resource type="PackedScene" uid="uid://bkiao2a760e1y" path="res://output/output.tscn" id="3_xwkvk"]
-[ext_resource type="PackedScene" uid="uid://hmljrxdre715" path="res://gate/gate.tscn" id="4_c651c"]
+[ext_resource type="PackedScene" uid="uid://f0xkh8q4wja6" path="res://ui/ui.tscn" id="2_pjrb6"]
+[ext_resource type="PackedScene" uid="uid://c43k4wk5e5fug" path="res://input/input.tscn" id="3_xwkvk"]
+[ext_resource type="PackedScene" uid="uid://bkiao2a760e1y" path="res://output/output.tscn" id="4_c651c"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_pjrb6")
 
-[node name="Input" parent="." instance=ExtResource("2_pjrb6")]
-position = Vector2(139, 1)
-direction = 1
-value = 1
+[node name="UI" parent="." instance=ExtResource("2_pjrb6")]
 
-[node name="Input2" parent="." instance=ExtResource("2_pjrb6")]
-position = Vector2(85, 91)
-value = 1
+[node name="Input" parent="." instance=ExtResource("3_xwkvk")]
+position = Vector2(10, 68)
 
-[node name="Input3" parent="." instance=ExtResource("2_pjrb6")]
-position = Vector2(82, 167)
-value = 1
-
-[node name="Input4" parent="." instance=ExtResource("2_pjrb6")]
-position = Vector2(184, 71)
-value = 1
-
-[node name="Output" parent="." instance=ExtResource("3_xwkvk")]
-position = Vector2(225, 69)
-
-[node name="Output2" parent="." instance=ExtResource("3_xwkvk")]
-position = Vector2(220, 168)
-
-[node name="Gate" parent="." instance=ExtResource("4_c651c")]
-position = Vector2(137, 95)
+[node name="Input2" parent="." instance=ExtResource("3_xwkvk")]
+position = Vector2(124, 10)
 direction = 1
 
-[node name="Gate2" parent="." instance=ExtResource("4_c651c")]
-position = Vector2(137, 166)
+[node name="Output" parent="." instance=ExtResource("4_c651c")]
+position = Vector2(256, 64)
+
+[connection signal="create" from="UI" to="." method="_on_ui_create"]
+[connection signal="start" from="UI" to="." method="_on_ui_start"]

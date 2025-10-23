@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://u2xkcnl5wkm0"]
+
+[ext_resource type="Script" uid="uid://cv7a4ta70cahq" path="res://obstacles/reflector.gd" id="1_a6oe4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhmn5"]
+size = Vector2(16, 16)
+
+[node name="Reflector" type="Node2D"]
+script = ExtResource("1_a6oe4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="ReflectorHtibox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReflectorHtibox"]
+shape = SubResource("RectangleShape2D_qhmn5")
+
+[node name="OutputLocation" type="Node2D" parent="."]
+position = Vector2(8, 0)
+
+[connection signal="area_entered" from="ReflectorHtibox" to="." method="_on_reflector_htibox_area_entered"]

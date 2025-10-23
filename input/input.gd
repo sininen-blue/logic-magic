@@ -6,6 +6,7 @@ enum Directions {UP, DOWN, LEFT, RIGHT}
 @export var direction: Directions = Directions.RIGHT
 @export var value: int = 0
 @export var speed: float = 64
+@export var active: bool = false
 
 var laser_path: PackedVector2Array = []
 var moving: bool = true
@@ -29,7 +30,7 @@ func _ready() -> void:
 	laser.points = laser_path
 
 func _process(delta: float) -> void:
-	if moving:
+	if moving and active:
 		var next_position: Vector2 = laser_path[-1] + laser_hitbox.position.normalized() * speed * delta
 		
 		laser_path.append(next_position)

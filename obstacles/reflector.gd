@@ -1,0 +1,33 @@
+extends Node2D
+
+enum Directions {UP, DOWN, LEFT, RIGHT}
+@export var direction: Directions = Directions.RIGHT
+
+@onready var output_location: Node2D = $OutputLocation
+
+func _ready() -> void:
+	if direction == Directions.UP:
+		output_location.position = Vector2(0, -1)
+	elif direction == Directions.DOWN:
+		output_location.position = Vector2(0, 1)
+	elif direction == Directions.LEFT:
+		output_location.position = Vector2(-1, 0)
+	elif direction == Directions.RIGHT:
+		output_location.position = Vector2(1, 0)
+	output_location.position = output_location.position * 16
+	
+
+
+func make_sub_input(value: int) -> void:
+	const INPUT: Resource = preload("res://input/input.tscn")
+	var input: Node = INPUT.instantiate()
+	
+	input.value = value
+	input.direction = direction
+	input.position = output_location.position
+	call_deferred("add_child", input)
+
+
+func _on_reflector_htibox_area_entered(area: Area2D) -> void:
+	if "Laser" in area.name:
+		make_sub_input(area.get_parent().value)

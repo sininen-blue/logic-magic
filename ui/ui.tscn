@@ -1,0 +1,69 @@
+[gd_scene load_steps=2 format=3 uid="uid://f0xkh8q4wja6"]
+
+[ext_resource type="Script" uid="uid://bepfchtkxnejg" path="res://ui/ui.gd" id="1_nb4k0"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_nb4k0")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="AndButton" type="Button" parent="Control/ButtonContainer"]
+layout_mode = 2
+text = "And
+"
+
+[node name="OrButton" type="Button" parent="Control/ButtonContainer"]
+layout_mode = 2
+text = "Or
+"
+
+[node name="XorButton" type="Button" parent="Control/ButtonContainer"]
+layout_mode = 2
+text = "Xor"
+
+[node name="NandButton" type="Button" parent="Control/ButtonContainer"]
+layout_mode = 2
+text = "Nand
+"
+
+[node name="NorButton" type="Button" parent="Control/ButtonContainer"]
+layout_mode = 2
+text = "Nor"
+
+[node name="XnorButton" type="Button" parent="Control/ButtonContainer"]
+layout_mode = 2
+text = "Xnor"
+
+[node name="NotButton" type="Button" parent="Control/ButtonContainer"]
+layout_mode = 2
+text = "Not
+"
+
+[node name="StartButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+text = "Start"
+
+[connection signal="pressed" from="Control/StartButton" to="." method="_on_start_button_pressed"]
