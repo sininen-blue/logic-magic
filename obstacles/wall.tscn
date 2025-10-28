@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyiw1be5knqcv"]
+[gd_scene load_steps=3 format=3 uid="uid://dyiw1be5knqcv"]
+
+[ext_resource type="Texture2D" uid="uid://efgig87ds5k5" path="res://assets/spritesheet.png" id="1_551ef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oh6kn"]
 size = Vector2(16, 16)
@@ -6,6 +8,9 @@ size = Vector2(16, 16)
 [node name="Wall" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_551ef")
+region_enabled = true
+region_rect = Rect2(32, 48, 16, 16)
 
 [node name="WallHitbox" type="Area2D" parent="."]
 

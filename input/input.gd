@@ -13,16 +13,21 @@ var moving: bool = true
 
 @onready var laser: Line2D = $Laser
 @onready var laser_hitbox: Area2D = $LaserHitbox
+@onready var sprite: Sprite2D = $Sprite2D
 
 
 func _ready() -> void:
 	if direction == Directions.UP:
+		sprite.region_rect = Rect2(64, 32, 16, 16)
 		laser_hitbox.position = Vector2(0, -1)
 	elif direction == Directions.DOWN:
+		sprite.region_rect = Rect2(48, 32, 16, 16)
 		laser_hitbox.position = Vector2(0, 1)
 	elif direction == Directions.LEFT:
+		sprite.region_rect = Rect2(32, 32, 16, 16)
 		laser_hitbox.position = Vector2(-1, 0)
 	elif direction == Directions.RIGHT:
+		sprite.region_rect = Rect2(32, 32, 16, 16)
 		laser_hitbox.position = Vector2(1, 0)
 	laser_hitbox.position = laser_hitbox.position * 16
 		

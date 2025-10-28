@@ -12,8 +12,26 @@ var current_inputs: Array[int] = []
 var inputs_required: int = 2
 
 @onready var output_location: Node2D = $OutputLocation
+@onready var sprite: Sprite2D = $Sprite2D
 
 func _ready() -> void:
+	match type:
+		GateTypes.AND:
+			sprite.region_rect = Rect2(32, 16, 16, 16)
+		GateTypes.OR:
+			sprite.region_rect = Rect2(48, 16, 16, 16)
+		GateTypes.XOR:
+			sprite.region_rect = Rect2(64, 16, 16, 16)
+		GateTypes.NAND:
+			sprite.region_rect = Rect2(32, 16, 16, 16)
+		GateTypes.NOR:
+			sprite.region_rect = Rect2(32, 16, 16, 16)
+		GateTypes.XNOR:
+			sprite.region_rect = Rect2(32, 16, 16, 16)
+		GateTypes.NOT:
+			sprite.region_rect = Rect2(80, 16, 16, 16)
+	
+	
 	if type == GateTypes.NOT:
 		inputs_required = 1
 	

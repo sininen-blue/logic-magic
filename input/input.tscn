@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c43k4wk5e5fug"]
+[gd_scene load_steps=4 format=3 uid="uid://c43k4wk5e5fug"]
 
 [ext_resource type="Script" uid="uid://dplef7pi6wmuf" path="res://input/input.gd" id="1_iv50o"]
+[ext_resource type="Texture2D" uid="uid://efgig87ds5k5" path="res://assets/spritesheet.png" id="2_tknd3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iv50o"]
 radius = 5.0
@@ -9,6 +10,9 @@ radius = 5.0
 script = ExtResource("1_iv50o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tknd3")
+region_enabled = true
+region_rect = Rect2(32, 32, 16, 16)
 
 [node name="Laser" type="Line2D" parent="."]
 

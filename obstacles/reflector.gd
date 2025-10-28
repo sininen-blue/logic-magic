@@ -4,16 +4,22 @@ enum Directions {UP, DOWN, LEFT, RIGHT}
 @export var direction: Directions = Directions.RIGHT
 
 @onready var output_location: Node2D = $OutputLocation
+@onready var sprite: Sprite2D = $Sprite2D
 
+
+# TODO: feature to let multi directional inputs and outputs
+# currenly only supports bottom to left, left to up, etc
 func _ready() -> void:
 	if direction == Directions.UP:
+		sprite.region_rect = Rect2(80, 48, 16, 16)
 		output_location.position = Vector2(0, -1)
 	elif direction == Directions.DOWN:
+		sprite.region_rect = Rect2(64, 48, 16, 16)
 		output_location.position = Vector2(0, 1)
 	elif direction == Directions.LEFT:
 		output_location.position = Vector2(-1, 0)
 	elif direction == Directions.RIGHT:
-		output_location.position = Vector2(1, 0)
+		sprite.region_rect = Rect2(80, 48, 16, 16)
 	output_location.position = output_location.position * 16
 	
 

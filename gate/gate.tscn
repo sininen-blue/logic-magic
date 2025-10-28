@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://hmljrxdre715"]
+[gd_scene load_steps=4 format=3 uid="uid://hmljrxdre715"]
 
 [ext_resource type="Script" uid="uid://dcajd0733daem" path="res://gate/gate.gd" id="1_3cjye"]
+[ext_resource type="Texture2D" uid="uid://efgig87ds5k5" path="res://assets/spritesheet.png" id="2_nywdg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njhvc"]
 size = Vector2(16, 16)
@@ -9,6 +10,9 @@ size = Vector2(16, 16)
 script = ExtResource("1_3cjye")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nywdg")
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)
 
 [node name="Hitbox" type="Area2D" parent="."]
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://u2xkcnl5wkm0"]
+[gd_scene load_steps=4 format=3 uid="uid://u2xkcnl5wkm0"]
 
 [ext_resource type="Script" uid="uid://cv7a4ta70cahq" path="res://obstacles/reflector.gd" id="1_a6oe4"]
+[ext_resource type="Texture2D" uid="uid://efgig87ds5k5" path="res://assets/spritesheet.png" id="2_f7mq1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhmn5"]
 size = Vector2(16, 16)
@@ -9,6 +10,9 @@ size = Vector2(16, 16)
 script = ExtResource("1_a6oe4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_f7mq1")
+region_enabled = true
+region_rect = Rect2(64, 48, 16, 16)
 
 [node name="ReflectorHtibox" type="Area2D" parent="."]
 
